@@ -25,3 +25,27 @@ vet_clinic=*# update animals set species = 'pokemon' where species IS NULL;
 UPDATE 5
 vet_clinic=*# commit;
 COMMIT
+
+vet_clinic=# begin;
+BEGIN
+vet_clinic=*# DELETE FROM animals;
+DELETE 11
+vet_clinic=!# rollback;
+ROLLBACK
+
+vet_clinic=# begin;
+BEGIN
+vet_clinic=*# DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+DELETE 1
+vet_clinic=*# SAVEPOINT update1;
+SAVEPOINT
+vet_clinic=*# UPDATE animals SET weight_kg = weight_kg*-1;
+UPDATE 10
+vet_clinic=*# rollback;
+ROLLBACK
+vet_clinic=# begin;
+BEGIN
+vet_clinic=*# UPDATE animals SET weight_kg = weight_kg*-1 WHERE weight_kg < 0;
+UPDATE 4
+vet_clinic=*# commit;
+COMMIT
