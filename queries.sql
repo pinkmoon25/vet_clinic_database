@@ -41,11 +41,50 @@ vet_clinic=*# SAVEPOINT update1;
 SAVEPOINT
 vet_clinic=*# UPDATE animals SET weight_kg = weight_kg*-1;
 UPDATE 10
-vet_clinic=*# rollback;
+vet_clinic=*# rollback to update1;
 ROLLBACK
-vet_clinic=# begin;
-BEGIN
 vet_clinic=*# UPDATE animals SET weight_kg = weight_kg*-1 WHERE weight_kg < 0;
 UPDATE 4
 vet_clinic=*# commit;
 COMMIT
+
+/*queries to answer questions*/
+vet_clinic=# SELECT COUNT(name) FROM animals; /*How many animals are there?*/ 
+ count 
+-------
+    10
+
+vet_clinic=# SELECT COUNT(name) FROM animals WHERE escape_attempts=0; /*How many animals have never tried to escape?*/
+ count 
+-------
+     2
+
+vet_clinic=# SELECT AVG(weight_kg) FROM animals; /*What is the average weight of animals?*/
+         avg         
+---------------------
+ 15.5500
+
+ vet_clinic=# SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;/*Who escapes the most, neutered or not neutered animals?*/
+ neutered | max 
+----------+-----
+ f        |   3
+ t        |   7
+
+ vet_clinic=# SELECT species, MAX(weight_kg) FROM animals GROUP BY species;/*What is the maximum weight of each type of animal?*/
+ species | max 
+---------+-----
+ pokemon |  17
+ digimon |  45
+
+vet_clinic=# SELECT species, MIN(weight_kg) FROM animals GROUP BY species;/*What is the minimum weight of each type of animal?*/
+ species | min 
+---------+-----
+ pokemon |  11
+ digimon | 5.7
+(2 rows)
+
+vet_clinic=# SELECT species, ROUND(AVG(escape_attempts),2) FROM animals GROUP BY species, date_of_birth HAVING date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
+ species | round 
+---------+-------
+ pokemon |  3.00
+ pokemon |  3.00
