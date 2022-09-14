@@ -20,9 +20,9 @@ insert into owners (full_name, age) values ('Sam Smith', 34),
 
 insert into species (name) values ('Pokemon'), ('Digimon');
 
-vet_clinic=*# update animals set species_id = 1 where name like '%mon'; 
+vet_clinic=*# update animals set species_id = 2 where name like '%mon'; 
 UPDATE 6
-vet_clinic=*# update animals set species_id = 2 where species_id IS NULL; 
+vet_clinic=*# update animals set species_id = 1 where species_id IS NULL; 
 UPDATE 4
 vet_clinic=*# update animals set owner_id = 1 where name='Agumon';
 UPDATE 1
