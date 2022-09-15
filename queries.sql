@@ -88,3 +88,78 @@ vet_clinic=# SELECT species, ROUND(AVG(escape_attempts),2) FROM animals GROUP BY
 ---------+-------
  pokemon |  3.00
  pokemon |  3.00
+
+--What animals belong to Melody Pond?
+vet_clinic=# select animals.name,owners.full_name from animals join owners on animals.owner_id = owners.id 
+where owners.full_name = 'Melody Pond';
+    name    |  full_name  
+------------+-------------
+ Blossom    | Melody Pond
+ Charmander | Melody Pond
+ Squirtle   | Melody Pond
+
+--List of all animals that are pokemon (their type is Pokemon).
+vet_clinic=# select animals.name, species.name from animals join species 
+ on animals.species_id = species.id
+ where species.name = 'Pokemon';
+   name   |  name   
+----------+---------
+ Agumon   | Pokemon
+ Gabumon  | Pokemon
+ Devimon  | Pokemon
+ Plantmon | Pokemon
+ Boarmon  | Pokemon
+ Angemon  | Pokemon
+(6 rows)
+
+--List all owners and their animals
+vet_clinic=# select owners.full_name, animals.name from animals right join owners on animals.owner_id = owners.id;
+    full_name     |    name    
+------------------+------------
+ Sam Smith        | Agumon
+ Jennifer Orwell  | Pikachu
+ Jennifer Orwell  | Gabumon
+ Bob              | Plantmon
+ Bob              | Devimon
+ Melody Pond      | Squirtle
+ Melody Pond      | Charmander
+ Melody Pond      | Blossom
+ Dean Winchester  | Angemon
+ Dean Winchester  | Boarmon
+ Joddie Whittaker | 
+(11 rows)
+
+--How many animals are there per species?
+vet_clinic=# select count(animals.name), species.name from animals join species on animals.species_id = species.id group by species.name;
+ count |  name   
+-------+---------
+     4 | Pokemon
+     6 | Digimon
+(2 rows)
+
+--List all Digimon owned by Jennifer Orwell.
+vet_clinic=# select owners.full_name, species.name from animals join owners on animals.owner_id = owners.id 
+join species on animals.species_id = species.id where species.name = 'Digimon' and owners.full_name = 'Jennifer Orwell';
+    full_name    |  name   
+-----------------+---------
+ Jennifer Orwell | Digimon
+(1 row)
+
+--List all animals owned by Dean Winchester that haven't tried to escape.
+vet_clinic=# select animals.name, owners.full_name from animals join owners on animals.owner_id = owners.id where animals.escape_attempts=0
+and owners.full_name = 'Dean Winchester';
+ name | full_name 
+------+-----------
+(0 rows)
+
+--Who owns the most animals?
+vet_clinic=# select count(*), owners.full_name from animals join owners on 
+animals.owner_id = owners.id group by owners.full_name order by count desc;
+ count |    full_name    
+-------+-----------------
+     3 | Melody Pond
+     2 | Bob
+     2 | Dean Winchester
+     2 | Jennifer Orwell
+     1 | Sam Smith
+(5 rows)
