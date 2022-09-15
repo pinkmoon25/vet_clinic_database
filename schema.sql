@@ -35,3 +35,8 @@ create table specializations (
     vet_id int references vets(id),
     species_id int references species(id)
 );
+
+create table visits (
+vet_id int references vets(id),
+animals_id int references animals(id)
+);
