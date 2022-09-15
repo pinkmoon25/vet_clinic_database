@@ -12,13 +12,19 @@ CREATE TABLE animals(
 ALTER TABLE animals ADD species VARCHAR;
 ALTER TABLE animals DROP column species;
 ALTER TABLE animals ADD PRIMARY KEY(id);
-alter table animals add species_id int;
-alter table animals add owner_id int;
-alter table animals add foreign key (species_id) references species(id);
-alter table animals add foreign key (owner_id) references owners(id);
+ALTER TABLE animals ADD species_id INT;
+ALTER TABLE animals ADD owner_id INT;
+ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species(id);
+ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
 
 CREATE TABLE owners(id INT GENERATED ALWAYS AS IDENTITY, full_name VARCHAR, age INT);
 ALTER TABLE owners ADD PRIMARY KEY(id);
 
 CREATE TABLE species(id INT GENERATED ALWAYS AS IDENTITY, name VARCHAR);
 ALTER TABLE species ADD PRIMARY KEY(id);
+
+CREATE TABLE vets (
+id INT GENERATED ALWAYS AS IDENTITY,
+name VARCHAR,
+age INT,
+date_of_graduation DATE);
