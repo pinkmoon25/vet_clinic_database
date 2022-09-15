@@ -28,3 +28,10 @@ id INT GENERATED ALWAYS AS IDENTITY,
 name VARCHAR,
 age INT,
 date_of_graduation DATE);
+
+ALTER TABLE vets ADD PRIMARY KEY(id);
+
+create table specializations (
+    vet_id int references vets(id),
+    species_id int references species(id)
+);
