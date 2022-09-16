@@ -230,8 +230,10 @@ limit 1;
 (1 row)
 
 --Details for most recent visit: animal information, vet information, and date of visit.
-select animals.name, vets.name, visits.date_of_visit from animals join visits on visits.animals_id = animals.id
-join vets on vets.id = visits.vet_id order by visits.date_of_visit desc limit 1;
+select animals.name, vets.name, visits.date_of_visit from animals 
+join visits on visits.animals_id = animals.id
+join vets on vets.id = visits.vet_id 
+order by visits.date_of_visit desc limit 1;
   name   |       name       | date_of_visit 
 ---------+------------------+---------------
  Devimon | Stephanie Mendez | 2021-05-04
@@ -259,6 +261,7 @@ from visits left join specializations on specializations.vet_id=visits.vet_id
 join animals on visits.animals_id=animals.id 
 where ((animals.species_id!=specializations.species_id or specializations.species_id is null) 
 and visits.vet_id!=3) group by visits.vet_id,specializations.species_id,animals.species_id;
+
  Vets ID | specialized in | Visited Species | count | unspecialize_visits 
 ---------+----------------+-----------------+-------+---------------------
        2 |                |               2 |     6 |                  12
