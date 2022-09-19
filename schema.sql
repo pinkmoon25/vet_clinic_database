@@ -1,11 +1,11 @@
 /* Database schema to keep the structure of entire database. */
 
 CREATE TABLE animals(
-    id INT PRIMARY KEY, 
-    name  VARCHAR, 
-    date_of_birth DATE, 
-    escape_attempts INT, 
-    neutered BOOLEAN, 
+    id INT PRIMARY KEY,
+    name  VARCHAR,
+    date_of_birth DATE,
+    escape_attempts INT,
+    neutered BOOLEAN,
     weight_kg Decimal
 );
 
@@ -41,3 +41,10 @@ vet_id int references vets(id),
 animals_id int references animals(id),
 date_of_visit date
 );
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+--data performance optimization
+create index animals_id_index on visits (animals_id); 
+
+create index email_index on owners (email);
