@@ -43,3 +43,8 @@ date_of_visit date
 );
 
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+--data performance optimization
+create index animals_id_index on visits (animals_id); 
+
+create index email_index on owners (email);
