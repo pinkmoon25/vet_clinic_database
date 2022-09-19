@@ -269,3 +269,8 @@ and visits.vet_id!=3) group by visits.vet_id,specializations.species_id,animals.
        4 |              2 |               1 |     1 |                  12
        2 |                |               1 |     3 |                  12
 (4 rows)
+
+
+/* data performance audit */
+explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
