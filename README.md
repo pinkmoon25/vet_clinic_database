@@ -20,6 +20,12 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [@twitterhandle](https://twitter.com/TusharS90674484)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/meet-tushar-singh/)
 
+👤 **Ernest Anyewe Adonu**
+
+- GitHub: [@principlebrothers](https://github.com/principlebrothers)
+- Twitter: [@adonu_ernest](https://twitter.com/adonu_ernest)
+- LinkedIn: [Ernest Anyewe Adonu](www.linkedin.com/in/ernest-anyewe-adonu)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
