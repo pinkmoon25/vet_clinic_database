@@ -1,7 +1,17 @@
-# Vet clinics database
+### Vet Clinic Database 🐾
 
-In this project I have created a vet clinic database with PostgreSQL.
+A PostgreSQL-based database designed for managing the operations of a veterinary clinic. This database handles various aspects of clinic management, including pet records, appointments, and staff information.
 
+### Features:
+- **Pet Records:** Maintain detailed information about pets, including medical history and owner details.
+- **Appointments:** Schedule and manage appointments for pets with veterinarians.
+- **Staff Management:** Keep track of veterinary staff and their schedules.
+- **Efficient Data Organization:** Built with PostgreSQL to ensure reliable data management and retrieval.
+
+### Built With:
+- PostgreSQL
+
+---
 
 ## Getting Started
 
